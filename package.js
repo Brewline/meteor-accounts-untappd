@@ -1,11 +1,11 @@
 Package.describe({
-  summary: "Instagram account login for meteor",
+  summary: "Untappd account login for meteor",
   "version": "0.2.2",
-  "git": "https://github.com/yubozhao/meteor-accounts-instagram",
-  "name": "bozhao:accounts-instagram"
+  "git": "https://github.com/Brewline/meteor-accounts-untappd",
+  "name": "brewline:accounts-untappd"
 });
 
-Package.on_use(function(api) {
+Package.on_use(function (api) {
   api.versionsFrom('METEOR@0.9.0');
   api.use('accounts-base', ['client', 'server']);
   api.imply('accounts-base', ['client', 'server']);
@@ -20,15 +20,15 @@ Package.on_use(function(api) {
   api.use('random', 'client');
   api.use('service-configuration', ['client', 'server']);
 
-  api.add_files('instagram_client.js', 'client');
-  api.add_files('instagram_server.js', 'server');
-  api.add_files("instagram.js");
+  api.add_files('untappd_client.js', 'client');
+  api.add_files('untappd_server.js', 'server');
+  api.add_files("untappd.js");
 
-  api.export('Instagram');
+  api.export('Untappd');
 
   api.add_files([
-    'instagram_configuration.html',
-    'instagram_configuration.js',
-    'instagram_login_button.css'
+    'untappd_configuration.html',
+    'untappd_configuration.js',
+    'untappd_login_button.css'
   ],'client');
 });

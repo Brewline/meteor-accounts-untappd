@@ -3,9 +3,9 @@ if (Meteor.isClient) {
     'click button': function () {
       // increment the counter when button is clicked
       Session.set("counter", Session.get("counter") + 1);
-      Meteor.loginWithInstagram({
-        loginStyle: 'popup'
-        //loginStyle: 'redirect'  you can use redirect for mobile web app
+      Meteor.loginWithUntappd({
+        // loginStyle: 'popup'
+        loginStyle: 'redirect' // you can use redirect for mobile web app
       }, function () {
         console.log('in call back', arguments);
       });
@@ -17,13 +17,13 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     Accounts.loginServiceConfiguration.remove({
-      service: 'instagram'
+      service: 'untappd'
     });
 
     Accounts.loginServiceConfiguration.insert({
-      service: 'instagram',
-      clientId: 'CLIENT_ID',
-      secret: 'SECRET'
+      service: 'untappd',
+      clientId: 'USE_AN_ACTUAL_CLIENT_ID',
+      secret: 'USE_AN_ACTUAL_SECRET'
     });
   });
 }

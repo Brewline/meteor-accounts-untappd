@@ -1,11 +1,11 @@
-# Meteor Acccounts Instagram
-#### Instagram account login for meteor
+# Meteor Acccounts Untappd
+#### Untappd account login for meteor
 
 ## Install
 
 `cd <your-meteor-project>`
 
-`meteor add bozhao:accounts-instagram`
+`meteor add brewline:accounts-untappd`
 
 and also add following package as pre-req -
 
@@ -14,13 +14,14 @@ and also add following package as pre-req -
 
 ## Setup and Usage
 
-1. Register your app with Instagram Developer Site at following url- http://instagram.com/developer/clients/register
+1. Register your app with Untappd Developer Site at following url- http://untappd.com/developer/clients/register
 
 2. Fill out the given form but make sure that redirect url as shown as follows-
 
-  OAuth redirect_uri: `<your-server-domain>:<port>/_oauth/instagram`
+  OAuth redirect_url: `<your-server-domain>:<port>/_oauth/untappd?close`
+  _(be sure to append `?close`. this package uses the `loginStyle` option which appends `?close` to the URL in `Meteor._redirectUri`)_
 
-  For e.g.redirect url for localhost : `http://localhost:3000/_oauth/instagram`
+  For e.g.redirect url for localhost : `http://localhost:3000/_oauth/untappd?close`
 
 3. After registration, note down the clientid and client secret.
 4. Now in your app do create the `accounts.js` (or `accounts.coffee` if you use coffeescript) and put following code inside
@@ -29,10 +30,10 @@ and also add following package as pre-req -
 
     ```
     ServiceConfiguration.configurations.remove({
-      service: 'instagram'
+      service: 'untappd'
     });
     ServiceConfiguration.configurations.insert({
-      service: 'instagram',
+      service: 'untappd',
       scope: 'basic',
       clientId: '<your-client-id>',
       secret: '<your-client-secret>'
@@ -41,7 +42,7 @@ and also add following package as pre-req -
 5. Now, all things are setup, you are ready to use this package
 6. Add following button code for login
 ```
-      Meteor.loginWithInstagram(function (err) {
+      Meteor.loginWithUntappd(function (err) {
           if (err) {
             console.log('login failed', err);
           } else {

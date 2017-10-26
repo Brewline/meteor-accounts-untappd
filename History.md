@@ -1,4 +1,3 @@
-#v0.2.0 / 2014-11-22
+#v0.1.0 / 2017-10-25
 
-* Update the user.profile fields to work better with Avatar package
-* Add README and History
+* (fork of meteor-accounts-instagram)

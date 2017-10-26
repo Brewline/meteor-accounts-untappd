@@ -8,7 +8,7 @@ binary-heap@1.0.8
 blaze@2.1.7
 blaze-tools@1.0.8
 boilerplate-generator@1.0.8
-bozhao:accounts-instagram@0.2.2
+brewline:accounts-untappd@0.2.2
 caching-compiler@1.0.4
 caching-html-compiler@1.0.6
 callback-hook@1.0.8
