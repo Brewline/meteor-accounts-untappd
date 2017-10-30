@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Untappd account login for meteor",
-  "version": "0.2.2",
+  "version": "0.1.0",
   "git": "https://github.com/Brewline/meteor-accounts-untappd",
   "name": "brewline:accounts-untappd"
 });
