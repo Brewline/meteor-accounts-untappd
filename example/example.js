@@ -27,3 +27,7 @@ if (Meteor.isServer) {
     });
   });
 }
+
+Untappd.rootUrl = function () {
+  return "local.example.com";
+}

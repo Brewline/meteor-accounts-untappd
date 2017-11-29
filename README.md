@@ -18,10 +18,11 @@ and also add following package as pre-req -
 
 2. Fill out the given form but make sure that redirect url as shown as follows-
 
-  OAuth redirect_url: `<your-server-domain>:<port>/_oauth/untappd?close`
-  _(be sure to append `?close`. this package uses the `loginStyle` option which appends `?close` to the URL in `Meteor._redirectUri`)_
+  OAuth redirect_url: `<your-server-domain>:<port>/_oauth/untappd`
 
-  For e.g.redirect url for localhost : `http://localhost:3000/_oauth/untappd?close`
+  For e.g.redirect url for localhost : `http://localhost:3000/_oauth/untappd`
+
+  In your client code, overwrite `Untappd.rootUrl` to provide the domain or hostname. This is useful in multitenant applications.
 
 3. After registration, note down the clientid and client secret.
 4. Now in your app do create the `accounts.js` (or `accounts.coffee` if you use coffeescript) and put following code inside

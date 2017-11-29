@@ -27,11 +27,19 @@ Untappd.requestCredential = function (options, credentialRequestCompleteCallback
 
   var flatScope = _.map(scope, encodeURIComponent).join('+');
 
+  var absoluteUrlOptions = {};
+  var rootUrl = this.rootUrl();
+  if (rootUrl) {
+    absoluteUrlOptions.rootUrl = rootUrl;
+  }
+
+  var uri = OAuth._redirectUri('untappd', config, null, absoluteUrlOptions);
+
   var loginUrl = 'https://untappd.com/oauth/authenticate' +
     '?client_id=' + config.clientId +
     '&response_type=code' +
     // '&scope=' + flatScope +
-    '&redirect_url=' + OAuth._redirectUri('untappd', config).replace('?close', '') +
+    '&redirect_url=' + uri.replace('?close', '') +
     '&state=' + OAuth._stateParam(loginStyle, credentialToken);
 
   OAuth.launchLogin({
@@ -42,3 +50,7 @@ Untappd.requestCredential = function (options, credentialRequestCompleteCallback
     credentialToken: credentialToken
   });
 };
+
+// override this method to set the root redirect URL
+// useful for multi-tenant environments
+Untappd.rootUrl = function () { /* noop */ };
