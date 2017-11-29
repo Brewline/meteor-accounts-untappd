@@ -26,12 +26,20 @@ const getTokenResponse = function (config, query) {
   var response;
 
   try {
+    const absoluteUrlOptions = {};
+    const rootUrl = Untappd.rootUrl();
+    if (rootUrl) {
+      absoluteUrlOptions.rootUrl = rootUrl;
+    }
+
+    var uri = OAuth._redirectUri('untappd', config, null, absoluteUrlOptions);
+
     const options = {
       params: {
         client_id: config.clientId,
         client_secret: OAuth.openSecret(config.secret),
         response_type: 'code',
-        redirect_url: OAuth._redirectUri('untappd', config).replace('?close', ''),
+        redirect_url: uri.replace('?close', ''),
         code: query.code
       }
     };
@@ -99,3 +107,7 @@ const ifNull = function (val, def) {
 Untappd.retrieveCredential = function (credentialToken, credentialSecret) {
   return Oauth.retrieveCredential(credentialToken, credentialSecret);
 };
+
+// override this method to set the root redirect URL
+// useful for multi-tenant environments
+Untappd.rootUrl = function () { /* noop */ };
